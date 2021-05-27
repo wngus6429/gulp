@@ -10,4 +10,13 @@ gulp-basic
 
 # Gulp Basic Setting
 
-<img src="https://user-images.githubusercontent.com/55697824/119776701-38df5e00-bf00-11eb-999d-df7115f33ca9.PNG"></img>
+- devDependencies": {
+- "@babel/core": "^7.14.3",
+- "@babel/preset-env": "^7.14.2",
+- "@babel/register": "^7.13.16",
+- "gulp": "^4.0.2",
+- "gulp-pug": "^4.0.1",
+- "gulp-webserver": "^0.9.1"
+- },
+- "dependencies": {
+- "del": "^6.0.0"

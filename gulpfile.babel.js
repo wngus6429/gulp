@@ -1,15 +1,30 @@
 import gulp from "gulp";
 import gpug from "gulp-pug";
+import del from "del";
+import ws from "gulp-webserver";
 
 const routes = {
   pug: {
+    watch: "src/**/*.pug",
     src: "src/*.pug", //src안의 모든 폴더 볼려면 src/**/*.pug
     dest: "build",
   },
 };
-export const pug = () => gulp.src(routes.pug.src).pipe(gpug()).pipe(gulp.dest(routes.pug.dest));
+const pug = () => gulp.src(routes.pug.src).pipe(gpug()).pipe(gulp.dest(routes.pug.dest));
 //gulp.dest()는 파일을 어디다가 두느냐
-export const dev = gulp.series([pug]);
+
+const clean = () => del(["build"]); //build폴더 알아서 지우게 만들려고
+
+const webserver = () => gulp.src("build").pipe(ws({ livereload: true, open: true }));
+
+const watching = () => {
+  gulp.watch(routes.pug.watch, pug);
+};
+const prepare = gulp.series([clean]);
+const assets = gulp.series([pug]);
+const postDev = gulp.parallel([webserver, watching]); //parallel쓰면 동시실행
+
+export const dev = gulp.series([prepare, assets, postDev]);
 
 //task는 모든 pug 파일을 가지고 이것들을 다른 폴더에 집어넣는게 하나의 task가 될수 있음
 //우선 이것드을 html로 바꾸고
@@ -25,3 +40,5 @@ export const dev = gulp.series([pug]);
 //gulp pug는 pug 템플릿을 컴파일 해준다. webpack으로 치면 loaders 플러그인
 
 //gulp는 파일을 일종의 흐름으로 만드는데 거기다가 pipe를 연결하는거지, pipe안에서 일이 일어나는거지
+//export는 package.json에서 쓸 command만 해주면됨
+//만약 clean을 export 하지 않는다면, console이나 package.json에서 사용못함
