@@ -1,0 +1,27 @@
+{
+  "name": "gulp-basic",
+  "version": "1.0.0",
+  "description": "gulp-basic",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wngus6429/gulp.git"
+  },
+  "author": "park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wngus6429/gulp/issues"
+  },
+  "homepage": "https://github.com/wngus6429/gulp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/register": "^7.13.16"
+  }
+}
