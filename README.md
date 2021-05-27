@@ -20,3 +20,5 @@ gulp-basic
 - },
 - "dependencies": {
 - "del": "^6.0.0"
+
+<img src="https://user-images.githubusercontent.com/55697824/119840546-0f462700-bf40-11eb-8cd6-9f46fc72f019.PNG"></img>
